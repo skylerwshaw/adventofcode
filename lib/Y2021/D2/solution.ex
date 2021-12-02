@@ -90,10 +90,10 @@ defmodule AOC.Y2021.D2 do
       end)
     end
 
-    def process_orientation(
-          %AOC.Submarine.Command{direction: :forward, magnitude: magnitude},
-          %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim}
-        ) do
+    defp process_orientation(
+           %AOC.Submarine.Command{direction: :forward, magnitude: magnitude},
+           %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim}
+         ) do
       %AOC.Submarine.Orientation{
         horizontal: cur_hor + magnitude,
         depth: cur_dep + cur_aim * magnitude,
@@ -101,17 +101,17 @@ defmodule AOC.Y2021.D2 do
       }
     end
 
-    def process_orientation(
-          %AOC.Submarine.Command{direction: :up, magnitude: magnitude},
-          %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim}
-        ) do
+    defp process_orientation(
+           %AOC.Submarine.Command{direction: :up, magnitude: magnitude},
+           %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim}
+         ) do
       %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim - magnitude}
     end
 
-    def process_orientation(
-          %AOC.Submarine.Command{direction: :down, magnitude: magnitude},
-          %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim}
-        ) do
+    defp process_orientation(
+           %AOC.Submarine.Command{direction: :down, magnitude: magnitude},
+           %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim}
+         ) do
       %AOC.Submarine.Orientation{horizontal: cur_hor, depth: cur_dep, aim: cur_aim + magnitude}
     end
   end
